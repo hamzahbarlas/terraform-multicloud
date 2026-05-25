@@ -15,13 +15,13 @@ This portfolio demonstrates real multi-cloud infrastructure across AWS, Azure, a
 
 ## Security
 
-Security was treated as a first-class concern across every module:
+Security was something we thought about on every module, not an afterthought:
 
-- AWS IAM: A dedicated terraform-user was created with least-privilege permissions instead of using the root account. The Lambda execution role is attached only to AWSLambdaBasicExecutionRole — the minimum required to write logs.
-- AWS Security Groups: Inbound rules explicitly allow HTTP on port 80 and SSH on port 22. All other traffic is denied by default.
-- Azure NSG: Network Security Group rules allow HTTP and SSH inbound traffic only. SSH authentication uses an auto-generated 4096-bit RSA key pair — no password authentication.
-- GCP Firewall: Firewall rules are scoped to instances with a specific network tag (nginx-server) rather than applying to the entire network, limiting blast radius.
-- GitHub Actions: AWS credentials are stored as encrypted GitHub Actions secrets and injected at runtime. No credentials are hardcoded anywhere in the codebase.
+- AWS: Created a dedicated IAM user (terraform-user) instead of using the root account, so Terraform only has the access it actually needs. The Lambda function gets the minimum IAM permissions required — just enough to write logs.
+- AWS Security Groups: Only ports 80 (HTTP) and 22 (SSH) are open inbound. Everything else is blocked by default.
+- Azure: SSH uses an auto-generated 4096-bit RSA key instead of a password. The Network Security Group explicitly allows only HTTP and SSH traffic.
+- GCP: Firewall rules are tied to a specific instance tag rather than opening traffic to the whole network, so only the intended VM is reachable.
+- GitHub Actions: AWS credentials are stored as encrypted secrets in GitHub and injected at runtime — nothing sensitive is written in the code.
 
 ## Technologies
 
