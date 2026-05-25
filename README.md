@@ -4,7 +4,7 @@ Infrastructure-as-Code portfolio provisioning resources across AWS, Azure, and G
 
 ## Overview
 
-This portfolio demonstrates real multi-cloud infrastructure across AWS, Azure, and GCP, provisioned entirely through Terraform and secured using IAM access keys with least-privilege permissions. Every project is designed to minimize cost — using free tier instances, serverless compute that only charges on execution, and resources that can be fully destroyed in seconds when not in use. A GitHub Actions CI/CD pipeline automatically validates all Terraform configs on every push, catching errors before they ever reach real infrastructure. Along the way this project worked through real-world cloud challenges including region capacity restrictions, VM SKU availability issues, and provider version conflicts — the same problems you'd encounter in a production environment.
+This portfolio demonstrates real multi-cloud infrastructure across AWS, Azure, and GCP, provisioned entirely through Terraform and secured using IAM access keys with least-privilege permissions. Every project is designed to minimize cost — using free tier instances, serverless compute that only charges on execution, and resources that can be fully destroyed in seconds when not in use. A GitHub Actions CI/CD pipeline automatically validates all Terraform configs on every push, catching errors before they ever reach real infrastructure. Along the way I worked through real-world cloud challenges including region capacity restrictions, VM SKU availability issues, and provider version conflicts — the same problems you run into in a production environment.
 
 ## Projects
 
@@ -15,7 +15,7 @@ This portfolio demonstrates real multi-cloud infrastructure across AWS, Azure, a
 
 ## Security
 
-Security was something we thought about on every module, not an afterthought:
+Security was something I focused on across every module, not an afterthought:
 
 - AWS: Created a dedicated IAM user (terraform-user) instead of using the root account, so Terraform only has the access it actually needs. The Lambda function gets the minimum IAM permissions required — just enough to write logs.
 - AWS Security Groups: Only ports 80 (HTTP) and 22 (SSH) are open inbound. Everything else is blocked by default.
